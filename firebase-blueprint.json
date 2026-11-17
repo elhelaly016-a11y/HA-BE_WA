@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Order": {
+      "description": "Customer and employee food/catering orders",
+      "properties": {
+        "id": { "type": "string", "description": "Unique order ID" },
+        "orderId": { "type": "string", "description": "Display order ID" },
+        "timestamp": { "type": "string", "description": "Order timestamp" },
+        "employeeName": { "type": "string", "maxLength": 100, "description": "Employee name" },
+        "department": { "type": "string", "maxLength": 100, "description": "Department name" },
+        "total": { "type": "number", "description": "Total amount in EGP" },
+        "paymentMethod": { "type": "string", "description": "Payment method: vodafone, instapay, payroll" },
+        "status": { "type": "string", "description": "Order status" },
+        "userId": { "type": "string", "description": "Firebase Auth UID" }
+      },
+      "required": ["orderId", "employeeName", "total", "paymentMethod"]
+    },
+    "Suggestion": {
+      "description": "Suggestions and complaints from employees",
+      "properties": {
+        "id": { "type": "string", "description": "Suggestion ID" },
+        "employeeName": { "type": "string", "maxLength": 100, "description": "Employee name" },
+        "text": { "type": "string", "maxLength": 1000, "description": "Suggestion or complaint text" },
+        "timestamp": { "type": "string", "description": "Timestamp" },
+        "userId": { "type": "string", "description": "User UID" }
+      },
+      "required": ["employeeName", "text"]
+    }
+  },
+  "firestore": {
+    "paths": {
+      "orders": {
+        "schema": "Order",
+        "description": "Collection of food and catering orders"
+      },
+      "suggestions": {
+        "schema": "Suggestion",
+        "description": "Collection of suggestions and complaints"
+      }
+    }
+  }
+}
